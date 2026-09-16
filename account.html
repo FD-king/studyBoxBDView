@@ -1,340 +1,518 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My Account — Study Box BD</title>
-  <link rel="stylesheet" href="assets/app.css" />
-</head>
-<body>
-  <div class="topbar">
-    <div class="wrap">
-      <div>Hotline: <strong>+880 1616 887 997</strong> · +880 1736 571 571</div>
-      <div class="topbar-right">
-        <a href="index.html">Home</a>
-        <a href="books.html">Books</a>
-        <a href="courses.html">Courses</a>
-      </div>
-    </div>
-  </div>
-  <header class="header">
-    <div class="wrap header-inner">
-      <a class="logo" href="index.html" aria-label="Study Box BD home">
-        <div class="logo-mark" aria-hidden="true">SB</div>
-        <div class="logo-text">Study Box BD<span>Bhuiyan English Academy</span></div>
-      </a>
-      <form class="search" id="search-form" role="search" action="books.html">
-        <label class="sr-only" for="q">Search books</label>
-        <input id="q" name="q" type="search" placeholder="Search VocabLab…" />
-        <button type="submit">Search</button>
-      </form>
-      <div class="header-actions">
-        <a class="icon-btn" href="account.html" aria-current="page" aria-label="Account">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-          <span class="account-btn-label" data-account-label>Sign in</span>
-        </a>
-                <button type="button" class="hamburger-btn" id="open-nav" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
-          Menu
-        </button>
-        <button type="button" class="icon-btn" id="open-cart" aria-label="Open cart">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.2 14h9.5c.75 0 1.41-.41 1.75-1.03l3.3-6.02A1 1 0 0 0 20.9 5H6.2L5.27 2.79A1 1 0 0 0 4.3 2H2v2h1.6l3.6 7.59-1.35 2.44C5.52 14.37 6.48 16 7.2 16h12v-2H7.2z"/></svg>
-          Cart
-          <span class="cart-badge" id="cart-count">0</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
-  <aside class="nav-drawer" id="nav-drawer" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
-    <div class="nav-drawer-head">
-      <h2>Menu</h2>
-      <button type="button" class="nav-drawer-close" id="nav-close" aria-label="Close menu">×</button>
-    </div>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="books.html">Books</a></li>
-      <li><a href="courses.html">Courses</a></li>
-      <li><a href="index.html#vocablab">About VocabLab</a></li>
-      <li><a href="index.html#playlists">Free Videos</a></li>
-      <li><a href="reviews.html">Reviews</a></li>
-      <li><a href="index.html#momentum">Momentum</a></li>
-      <li><a href="account.html">My account</a></li>
-    </ul>
-    <div class="nav-drawer-foot">
-      Hotline: <a href="tel:+8801616887997">+880 1616 887 997</a>
-    </div>
-  </aside>
-  <main>
-    <div class="wrap page-title">
-      <h1>My account</h1>
-      <p>Sign in, manage your profile, and track orders</p>
-    </div>
-
-    <section class="section" id="auth">
-      <div class="wrap" style="display:grid;gap:1rem;max-width:480px;">
-        <div class="account-panel" id="signin-panel">
-          <h2>Sign in</h2>
-          <p class="muted">Welcome back to Study Box BD.</p>
-          <form id="signin-form" class="form-grid" novalidate>
-            <div>
-              <label for="signin-email">Email</label>
-              <input id="signin-email" type="email" required autocomplete="email" placeholder="you@email.com" />
-            </div>
-            <div>
-              <label for="signin-password">Password</label>
-              <input id="signin-password" type="password" required autocomplete="current-password" placeholder="••••••••" />
-            </div>
-            <button type="submit" class="btn btn-accent">Sign in</button>
-          </form>
-          <p class="auth-switch">Don’t have an account? <button type="button" class="link-btn" id="show-signup">Sign up</button></p>
-        </div>
-
-        <div class="account-panel checkout-hidden" id="signup-panel">
-          <h2>Sign up</h2>
-          <p class="muted">Create a free account to checkout and save orders.</p>
-          <form id="signup-form" class="form-grid" novalidate>
-            <div class="profile-grid">
-              <div>
-                <label for="signup-name">Full name</label>
-                <input id="signup-name" required autocomplete="name" placeholder="Your name" />
-              </div>
-              <div>
-                <label for="signup-phone">Phone</label>
-                <input id="signup-phone" type="tel" autocomplete="tel" placeholder="01XXXXXXXXX" maxlength="14" />
-              </div>
-            </div>
-            <div>
-              <label for="signup-email">Email</label>
-              <input id="signup-email" type="email" required autocomplete="email" placeholder="you@email.com" />
-            </div>
-            <div>
-              <label for="signup-password">Password</label>
-              <input id="signup-password" type="password" required autocomplete="new-password" minlength="4" placeholder="At least 4 characters" />
-            </div>
-            <button type="submit" class="btn btn-accent">Create account</button>
-          </form>
-          <p class="auth-switch">Already have an account? <button type="button" class="link-btn" id="show-signin">Sign in</button></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="profile">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./assets/icons/BookIcon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Account — Study Box BD</title>
+    <link rel="stylesheet" href="assets/app.css" />
+  </head>
+  <body>
+    <div class="topbar">
       <div class="wrap">
-        <div class="section-head"><h2>Profile</h2></div>
-        <div class="account-panel" id="profile-panel">
-          <div id="profile-guest" class="empty-state">Sign in to see and edit your profile.</div>
-          <form id="profile-form" class="form-grid checkout-hidden" novalidate>
-            <div class="profile-grid">
-              <div>
-                <label for="profile-name">Full name</label>
-                <input id="profile-name" required />
-              </div>
-              <div>
-                <label for="profile-phone">Phone</label>
-                <input id="profile-phone" maxlength="14" />
-              </div>
-            </div>
-            <div>
-              <label for="profile-address">Delivery address</label>
-              <input id="profile-address" placeholder="Area, district" />
-            </div>
-            <div>
-              <label for="profile-email">Email</label>
-              <input id="profile-email" disabled />
-            </div>
-            <div class="profile-actions">
-              <button type="submit" class="btn btn-accent">Save profile</button>
-              <button type="button" class="btn btn-outline" id="signout-btn">Sign out</button>
-            </div>
-          </form>
+        <div>
+          Hotline: <strong>+880 1616 887 997</strong> · +880 1736 571 571
+        </div>
+        <div class="topbar-right">
+          <a href="index.html">Home</a>
+          <a href="books.html">Books</a>
+          <a href="courses.html">Courses</a>
         </div>
       </div>
-    </section>
-
-    <section class="section" id="orders">
-      <div class="wrap">
-        <div class="section-head"><h2>Purchased books</h2></div>
-        <div id="books-history">
-          <div class="empty-state" id="books-history-guest">Sign in to view books you bought.</div>
-          <ul class="order-list checkout-hidden" id="books-history-list"></ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="my-courses">
-      <div class="wrap">
-        <div class="section-head"><h2>My courses &amp; progress</h2></div>
-        <div id="courses-history">
-          <div class="empty-state" id="courses-history-guest">Sign in to view enrolled courses.</div>
-          <ul class="order-list checkout-hidden" id="courses-history-list"></ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="orders">
-      <div class="wrap">
-        <div class="section-head"><h2>Full order history</h2></div>
-        <div id="orders-root">
-          <div class="empty-state" id="orders-guest">Sign in to view your orders.</div>
-          <ul class="order-list checkout-hidden" id="orders-list"></ul>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap footer-grid">
-      <div>
-        <div class="logo" style="margin-bottom:.6rem;">
+    </div>
+    <header class="header">
+      <div class="wrap header-inner">
+        <a class="logo" href="index.html" aria-label="Study Box BD home">
           <div class="logo-mark" aria-hidden="true">SB</div>
-          <div class="logo-text">Study Box BD<span>Bhuiyan English Academy</span></div>
-        </div>
-        <ul class="contact-lines">
-          <li><strong>Phone:</strong> <a href="tel:+8801616887997">+880 1616 887 997</a> · <a href="tel:+8801736571571">+880 1736 571 571</a></li>
-          <li><strong>Email:</strong> <a href="mailto:studyboxa2z@gmail.com">studyboxa2z@gmail.com</a></li>
-          <li><strong>Address:</strong> Road #13, Shiyal Bari, Mirpur #3, Dhaka, Bangladesh</li>
-        </ul>
-        <div class="footer-map" aria-label="Map of Mirpur 3, Dhaka">
-          <iframe
-            title="Study Box BD location map — Mirpur 3, Dhaka"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=90.355%2C23.790%2C90.385%2C23.812&amp;layer=mapnik&amp;marker=23.801%2C90.370"
-          ></iframe>
-        </div>
-      </div>
-      <div>
-        <h4>Shop</h4>
-        <ul>
-          <li><a href="books.html">All books</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="reviews.html">Reviews</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Account</h4>
-        <ul>
-          <li><a href="#signin-panel">Sign in</a></li>
-          <li><a href="#signup-panel">Sign up</a></li>
-          <li><a href="#orders">Order history</a></li>
-          <li><a href="#profile">Profile</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="wrap footer-bottom">
-      <span>© <span id="year"></span> Study Box BD. All rights reserved.</span>
-      <span><a href="index.html">← Back to home</a></span>
-    </div>
-  </footer>
-
-  <div class="backdrop" id="backdrop" hidden></div>
-  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
-    <div class="drawer-head">
-      <h2 id="drawer-title">Your cart</h2>
-      <button type="button" class="drawer-close" id="drawer-close" aria-label="Close cart">×</button>
-    </div>
-    <div class="drawer-body">
-      <div id="cart-items"></div>
-      <div id="checkout-block" class="checkout-hidden" style="margin-top:1rem;">
-        <h3 style="margin:0 0 .65rem;font-size:1rem;">Payment details</h3>
-        <form id="payment-form" class="form-grid" novalidate>
-          <div><label for="full-name">Full name</label><input id="full-name" required placeholder="Your name" /></div>
-          <div><label for="phone">Mobile number</label><input id="phone" type="tel" required placeholder="01XXXXXXXXX" maxlength="14" /></div>
-          <div><label for="address">Delivery address</label><input id="address" required placeholder="Area, district" /></div>
-          <div>
-            <label for="method">Payment method</label>
-            <select id="method">
-              <option>bKash (demo)</option>
-              <option>Nagad (demo)</option>
-              <option>Cash on delivery (demo)</option>
-            </select>
+          <div class="logo-text">
+            Study Box BD<span>Bhuiyan English Academy</span>
           </div>
+        </a>
+        <form class="search" id="search-form" role="search" action="books.html">
+          <label class="sr-only" for="q">Search books</label>
+          <input id="q" name="q" type="search" placeholder="Search VocabLab…" />
+          <button type="submit">Search</button>
         </form>
+        <div class="header-actions">
+          <a
+            class="icon-btn"
+            href="account.html"
+            aria-current="page"
+            aria-label="Account"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+              />
+            </svg>
+            <span class="account-btn-label" data-account-label>Sign in</span>
+          </a>
+          <button
+            type="button"
+            class="hamburger-btn"
+            id="open-nav"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="nav-drawer"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+            </svg>
+            Menu
+          </button>
+          <button
+            type="button"
+            class="icon-btn"
+            id="open-cart"
+            aria-label="Open cart"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.2 14h9.5c.75 0 1.41-.41 1.75-1.03l3.3-6.02A1 1 0 0 0 20.9 5H6.2L5.27 2.79A1 1 0 0 0 4.3 2H2v2h1.6l3.6 7.59-1.35 2.44C5.52 14.37 6.48 16 7.2 16h12v-2H7.2z"
+              />
+            </svg>
+            Cart
+            <span class="cart-badge" id="cart-count">0</span>
+          </button>
+        </div>
       </div>
-      <div class="pay-success" id="pay-success" role="status">
-        <div class="check" aria-hidden="true">✓</div>
-        <h3 style="margin:0 0 .4rem;font-size:1.1rem;">Order confirmed</h3>
-        <p style="color:var(--body);font-size:13.5px;margin:0 0 1rem;">Saved to your order history (demo).</p>
-        <button type="button" class="btn btn-outline" id="success-done">Done</button>
+    </header>
+
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+    <aside
+      class="nav-drawer"
+      id="nav-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Site menu"
+      hidden
+    >
+      <div class="nav-drawer-head">
+        <h2>Menu</h2>
+        <button
+          type="button"
+          class="nav-drawer-close"
+          id="nav-close"
+          aria-label="Close menu"
+        >
+          ×
+        </button>
       </div>
-    </div>
-    <div class="drawer-foot" id="drawer-foot">
-      <div class="total-row"><span>Total</span><span id="cart-total">৳0</span></div>
-      <button type="button" class="btn btn-accent btn-block" id="pay-btn">Cart is empty</button>
-    </div>
-  </aside>
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script src="assets/app.js"></script>
-  <script>
-    let cart = SB.loadCart();
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="books.html">Books</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="index.html#vocablab">About VocabLab</a></li>
+        <li><a href="index.html#playlists">Free Videos</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="index.html#momentum">Momentum</a></li>
+        <li><a href="account.html">My account</a></li>
+      </ul>
+      <div class="nav-drawer-foot">
+        Hotline: <a href="tel:+8801616887997">+880 1616 887 997</a>
+      </div>
+    </aside>
+    <main>
+      <div class="wrap page-title">
+        <h1>My account</h1>
+        <p>Sign in, manage your profile, and track orders</p>
+      </div>
 
-    function refresh() {
-      SB.updateBadge(cart);
-      SB.renderCartItems(cart, refresh);
-      paintAccount();
-    }
+      <section class="section" id="auth">
+        <div class="wrap" style="display: grid; gap: 1rem; max-width: 480px">
+          <div class="account-panel" id="signin-panel">
+            <h2>Sign in</h2>
+            <p class="muted">Welcome back to Study Box BD.</p>
+            <form id="signin-form" class="form-grid" novalidate>
+              <div>
+                <label for="signin-email">Email</label>
+                <input
+                  id="signin-email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                  placeholder="you@email.com"
+                />
+              </div>
+              <div>
+                <label for="signin-password">Password</label>
+                <input
+                  id="signin-password"
+                  type="password"
+                  required
+                  autocomplete="current-password"
+                  placeholder="••••••••"
+                />
+              </div>
+              <button type="submit" class="btn btn-accent">Sign in</button>
+            </form>
+            <p class="auth-switch">
+              Don’t have an account?
+              <button type="button" class="link-btn" id="show-signup">
+                Sign up
+              </button>
+            </p>
+          </div>
 
-    function paintAccount() {
-      const user = SB.getUser();
-      const signinPanel = document.getElementById("signin-panel");
-      const signupPanel = document.getElementById("signup-panel");
-      const profileForm = document.getElementById("profile-form");
-      const profileGuest = document.getElementById("profile-guest");
-      const ordersGuest = document.getElementById("orders-guest");
-      const ordersList = document.getElementById("orders-list");
-      const booksGuest = document.getElementById("books-history-guest");
-      const booksList = document.getElementById("books-history-list");
-      const coursesGuest = document.getElementById("courses-history-guest");
-      const coursesList = document.getElementById("courses-history-list");
+          <div class="account-panel checkout-hidden" id="signup-panel">
+            <h2>Sign up</h2>
+            <p class="muted">
+              Create a free account to checkout and save orders.
+            </p>
+            <form id="signup-form" class="form-grid" novalidate>
+              <div class="profile-grid">
+                <div>
+                  <label for="signup-name">Full name</label>
+                  <input
+                    id="signup-name"
+                    required
+                    autocomplete="name"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label for="signup-phone">Phone</label>
+                  <input
+                    id="signup-phone"
+                    type="tel"
+                    autocomplete="tel"
+                    placeholder="01XXXXXXXXX"
+                    maxlength="14"
+                  />
+                </div>
+              </div>
+              <div>
+                <label for="signup-email">Email</label>
+                <input
+                  id="signup-email"
+                  type="email"
+                  required
+                  autocomplete="email"
+                  placeholder="you@email.com"
+                />
+              </div>
+              <div>
+                <label for="signup-password">Password</label>
+                <input
+                  id="signup-password"
+                  type="password"
+                  required
+                  autocomplete="new-password"
+                  minlength="4"
+                  placeholder="At least 4 characters"
+                />
+              </div>
+              <button type="submit" class="btn btn-accent">
+                Create account
+              </button>
+            </form>
+            <p class="auth-switch">
+              Already have an account?
+              <button type="button" class="link-btn" id="show-signin">
+                Sign in
+              </button>
+            </p>
+          </div>
+        </div>
+      </section>
 
-      if (user) {
-        signinPanel?.classList.add("checkout-hidden");
-        signupPanel?.classList.add("checkout-hidden");
-      } else {
-        // default: sign-in only (signup toggled by link)
-        if (!signupPanel?.dataset.open) signinPanel?.classList.remove("checkout-hidden");
+      <section class="section" id="profile">
+        <div class="wrap">
+          <div class="section-head"><h2>Profile</h2></div>
+          <div class="account-panel" id="profile-panel">
+            <div id="profile-guest" class="empty-state">
+              Sign in to see and edit your profile.
+            </div>
+            <form
+              id="profile-form"
+              class="form-grid checkout-hidden"
+              novalidate
+            >
+              <div class="profile-grid">
+                <div>
+                  <label for="profile-name">Full name</label>
+                  <input id="profile-name" required />
+                </div>
+                <div>
+                  <label for="profile-phone">Phone</label>
+                  <input id="profile-phone" maxlength="14" />
+                </div>
+              </div>
+              <div>
+                <label for="profile-address">Delivery address</label>
+                <input id="profile-address" placeholder="Area, district" />
+              </div>
+              <div>
+                <label for="profile-email">Email</label>
+                <input id="profile-email" disabled />
+              </div>
+              <div class="profile-actions">
+                <button type="submit" class="btn btn-accent">
+                  Save profile
+                </button>
+                <button type="button" class="btn btn-outline" id="signout-btn">
+                  Sign out
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="orders">
+        <div class="wrap">
+          <div class="section-head"><h2>Purchased books</h2></div>
+          <div id="books-history">
+            <div class="empty-state" id="books-history-guest">
+              Sign in to view books you bought.
+            </div>
+            <ul class="order-list checkout-hidden" id="books-history-list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="my-courses">
+        <div class="wrap">
+          <div class="section-head"><h2>My courses &amp; progress</h2></div>
+          <div id="courses-history">
+            <div class="empty-state" id="courses-history-guest">
+              Sign in to view enrolled courses.
+            </div>
+            <ul
+              class="order-list checkout-hidden"
+              id="courses-history-list"
+            ></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="orders">
+        <div class="wrap">
+          <div class="section-head"><h2>Full order history</h2></div>
+          <div id="orders-root">
+            <div class="empty-state" id="orders-guest">
+              Sign in to view your orders.
+            </div>
+            <ul class="order-list checkout-hidden" id="orders-list"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom: 0.6rem">
+            <div class="logo-mark" aria-hidden="true">SB</div>
+            <div class="logo-text">
+              Study Box BD<span>Bhuiyan English Academy</span>
+            </div>
+          </div>
+          <ul class="contact-lines">
+            <li>
+              <strong>Phone:</strong>
+              <a href="tel:+8801616887997">+880 1616 887 997</a> ·
+              <a href="tel:+8801736571571">+880 1736 571 571</a>
+            </li>
+            <li>
+              <strong>Email:</strong>
+              <a href="mailto:studyboxa2z@gmail.com">studyboxa2z@gmail.com</a>
+            </li>
+            <li>
+              <strong>Address:</strong> Road #13, Shiyal Bari, Mirpur #3, Dhaka,
+              Bangladesh
+            </li>
+          </ul>
+          <div class="footer-map" aria-label="Map of Mirpur 3, Dhaka">
+            <iframe
+              title="Study Box BD location map — Mirpur 3, Dhaka"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=90.355%2C23.790%2C90.385%2C23.812&amp;layer=mapnik&amp;marker=23.801%2C90.370"
+            ></iframe>
+          </div>
+        </div>
+        <div>
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="books.html">All books</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="reviews.html">Reviews</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <ul>
+            <li><a href="#signin-panel">Sign in</a></li>
+            <li><a href="#signup-panel">Sign up</a></li>
+            <li><a href="#orders">Order history</a></li>
+            <li><a href="#profile">Profile</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <span
+          >© <span id="year"></span> Study Box BD. All rights reserved.</span
+        >
+        <span><a href="index.html">← Back to home</a></span>
+      </div>
+    </footer>
+
+    <div class="backdrop" id="backdrop" hidden></div>
+    <aside
+      class="drawer"
+      id="drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="drawer-title"
+      hidden
+    >
+      <div class="drawer-head">
+        <h2 id="drawer-title">Your cart</h2>
+        <button
+          type="button"
+          class="drawer-close"
+          id="drawer-close"
+          aria-label="Close cart"
+        >
+          ×
+        </button>
+      </div>
+      <div class="drawer-body">
+        <div id="cart-items"></div>
+        <div
+          id="checkout-block"
+          class="checkout-hidden"
+          style="margin-top: 1rem"
+        >
+          <h3 style="margin: 0 0 0.65rem; font-size: 1rem">Payment details</h3>
+          <form id="payment-form" class="form-grid" novalidate>
+            <div>
+              <label for="full-name">Full name</label
+              ><input id="full-name" required placeholder="Your name" />
+            </div>
+            <div>
+              <label for="phone">Mobile number</label
+              ><input
+                id="phone"
+                type="tel"
+                required
+                placeholder="01XXXXXXXXX"
+                maxlength="14"
+              />
+            </div>
+            <div>
+              <label for="address">Delivery address</label
+              ><input id="address" required placeholder="Area, district" />
+            </div>
+            <div>
+              <label for="method">Payment method</label>
+              <select id="method">
+                <option>bKash (demo)</option>
+                <option>Nagad (demo)</option>
+                <option>Cash on delivery (demo)</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="pay-success" id="pay-success" role="status">
+          <div class="check" aria-hidden="true">✓</div>
+          <h3 style="margin: 0 0 0.4rem; font-size: 1.1rem">Order confirmed</h3>
+          <p style="color: var(--body); font-size: 13.5px; margin: 0 0 1rem">
+            Saved to your order history (demo).
+          </p>
+          <button type="button" class="btn btn-outline" id="success-done">
+            Done
+          </button>
+        </div>
+      </div>
+      <div class="drawer-foot" id="drawer-foot">
+        <div class="total-row">
+          <span>Total</span><span id="cart-total">৳0</span>
+        </div>
+        <button type="button" class="btn btn-accent btn-block" id="pay-btn">
+          Cart is empty
+        </button>
+      </div>
+    </aside>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="assets/app.js"></script>
+    <script>
+      let cart = SB.loadCart();
+
+      function refresh() {
+        SB.updateBadge(cart);
+        SB.renderCartItems(cart, refresh);
+        paintAccount();
       }
 
-      if (!user) {
-        profileGuest?.classList.remove("checkout-hidden");
-        profileForm?.classList.add("checkout-hidden");
-        ordersGuest?.classList.remove("checkout-hidden");
-        ordersList?.classList.add("checkout-hidden");
-        booksGuest?.classList.remove("checkout-hidden");
-        booksList?.classList.add("checkout-hidden");
-        coursesGuest?.classList.remove("checkout-hidden");
-        coursesList?.classList.add("checkout-hidden");
-        return;
-      }
+      function paintAccount() {
+        const user = SB.getUser();
+        const signinPanel = document.getElementById("signin-panel");
+        const signupPanel = document.getElementById("signup-panel");
+        const profileForm = document.getElementById("profile-form");
+        const profileGuest = document.getElementById("profile-guest");
+        const ordersGuest = document.getElementById("orders-guest");
+        const ordersList = document.getElementById("orders-list");
+        const booksGuest = document.getElementById("books-history-guest");
+        const booksList = document.getElementById("books-history-list");
+        const coursesGuest = document.getElementById("courses-history-guest");
+        const coursesList = document.getElementById("courses-history-list");
 
-      profileGuest?.classList.add("checkout-hidden");
-      profileForm?.classList.remove("checkout-hidden");
-      document.getElementById("profile-name").value = user.name || "";
-      document.getElementById("profile-phone").value = user.phone || "";
-      document.getElementById("profile-address").value = user.address || "";
-      document.getElementById("profile-email").value = user.email || "";
+        if (user) {
+          signinPanel?.classList.add("checkout-hidden");
+          signupPanel?.classList.add("checkout-hidden");
+        } else {
+          // default: sign-in only (signup toggled by link)
+          if (!signupPanel?.dataset.open)
+            signinPanel?.classList.remove("checkout-hidden");
+        }
 
-      const orders = SB.listOrders();
-      const bookPurchases = [];
-      const coursePurchases = [];
-      orders.forEach((o) => {
-        (o.items || []).forEach((i) => {
-          const row = { ...i, orderId: o.id, createdAt: o.createdAt, status: o.status };
-          if (i.kind === "course") coursePurchases.push(row);
-          else bookPurchases.push(row);
+        if (!user) {
+          profileGuest?.classList.remove("checkout-hidden");
+          profileForm?.classList.add("checkout-hidden");
+          ordersGuest?.classList.remove("checkout-hidden");
+          ordersList?.classList.add("checkout-hidden");
+          booksGuest?.classList.remove("checkout-hidden");
+          booksList?.classList.add("checkout-hidden");
+          coursesGuest?.classList.remove("checkout-hidden");
+          coursesList?.classList.add("checkout-hidden");
+          return;
+        }
+
+        profileGuest?.classList.add("checkout-hidden");
+        profileForm?.classList.remove("checkout-hidden");
+        document.getElementById("profile-name").value = user.name || "";
+        document.getElementById("profile-phone").value = user.phone || "";
+        document.getElementById("profile-address").value = user.address || "";
+        document.getElementById("profile-email").value = user.email || "";
+
+        const orders = SB.listOrders();
+        const bookPurchases = [];
+        const coursePurchases = [];
+        orders.forEach((o) => {
+          (o.items || []).forEach((i) => {
+            const row = {
+              ...i,
+              orderId: o.id,
+              createdAt: o.createdAt,
+              status: o.status,
+            };
+            if (i.kind === "course") coursePurchases.push(row);
+            else bookPurchases.push(row);
+          });
         });
-      });
 
-      // Purchased books
-      if (bookPurchases.length === 0) {
-        booksGuest?.classList.remove("checkout-hidden");
-        booksList?.classList.add("checkout-hidden");
-      } else {
-        booksGuest?.classList.add("checkout-hidden");
-        booksList?.classList.remove("checkout-hidden");
-        booksList.innerHTML = bookPurchases.map((b) => `
+        // Purchased books
+        if (bookPurchases.length === 0) {
+          booksGuest?.classList.remove("checkout-hidden");
+          booksList?.classList.add("checkout-hidden");
+        } else {
+          booksGuest?.classList.add("checkout-hidden");
+          booksList?.classList.remove("checkout-hidden");
+          booksList.innerHTML = bookPurchases
+            .map(
+              (b) => `
           <li class="order-card">
             <header>
               <span>${b.orderId}</span>
@@ -344,23 +522,29 @@
             <h3>${b.title}</h3>
             <div class="order-total">${SB.money(b.price)}</div>
           </li>
-        `).join("");
-      }
+        `,
+            )
+            .join("");
+        }
 
-      // Courses + progress
-      if (coursePurchases.length === 0) {
-        coursesGuest?.classList.remove("checkout-hidden");
-        coursesList?.classList.add("checkout-hidden");
-      } else {
-        coursesGuest?.classList.add("checkout-hidden");
-        coursesList?.classList.remove("checkout-hidden");
-        coursesList.innerHTML = coursePurchases.map((c, idx) => {
-          const meta = SB.courses.find((x) => x.id === c.id) || {};
-          const total = meta.totalLessons || 12;
-          // Demo progress: deterministic per course id
-          const done = Math.max(1, Math.min(total, (c.id.length * 3 + idx) % total + 1));
-          const pct = Math.round((done / total) * 100);
-          return `
+        // Courses + progress
+        if (coursePurchases.length === 0) {
+          coursesGuest?.classList.remove("checkout-hidden");
+          coursesList?.classList.add("checkout-hidden");
+        } else {
+          coursesGuest?.classList.add("checkout-hidden");
+          coursesList?.classList.remove("checkout-hidden");
+          coursesList.innerHTML = coursePurchases
+            .map((c, idx) => {
+              const meta = SB.courses.find((x) => x.id === c.id) || {};
+              const total = meta.totalLessons || 12;
+              // Demo progress: deterministic per course id
+              const done = Math.max(
+                1,
+                Math.min(total, ((c.id.length * 3 + idx) % total) + 1),
+              );
+              const pct = Math.round((done / total) * 100);
+              return `
             <li class="order-card">
               <header>
                 <span>${c.orderId}</span>
@@ -375,19 +559,22 @@
               <div class="order-total">${SB.money(c.price)}</div>
             </li>
           `;
-        }).join("");
-      }
+            })
+            .join("");
+        }
 
-      // Full order log
-      if (orders.length === 0) {
-        ordersGuest?.classList.remove("checkout-hidden");
-        if (ordersGuest) ordersGuest.textContent = "No orders yet.";
-        ordersList?.classList.add("checkout-hidden");
-        return;
-      }
-      ordersGuest?.classList.add("checkout-hidden");
-      ordersList?.classList.remove("checkout-hidden");
-      ordersList.innerHTML = orders.map((o) => `
+        // Full order log
+        if (orders.length === 0) {
+          ordersGuest?.classList.remove("checkout-hidden");
+          if (ordersGuest) ordersGuest.textContent = "No orders yet.";
+          ordersList?.classList.add("checkout-hidden");
+          return;
+        }
+        ordersGuest?.classList.add("checkout-hidden");
+        ordersList?.classList.remove("checkout-hidden");
+        ordersList.innerHTML = orders
+          .map(
+            (o) => `
         <li class="order-card">
           <header>
             <span>Order ${o.id}</span>
@@ -399,72 +586,82 @@
           </ul>
           <div class="order-total">Total ${SB.money(o.total)}</div>
         </li>
-      `).join("");
-    }
+      `,
+          )
+          .join("");
+      }
 
-    document.getElementById("show-signup")?.addEventListener("click", () => {
-      document.getElementById("signin-panel")?.classList.add("checkout-hidden");
-      const sp = document.getElementById("signup-panel");
-      sp?.classList.remove("checkout-hidden");
-      if (sp) sp.dataset.open = "1";
-    });
-    document.getElementById("show-signin")?.addEventListener("click", () => {
-      document.getElementById("signup-panel")?.classList.add("checkout-hidden");
-      const sp = document.getElementById("signup-panel");
-      if (sp) delete sp.dataset.open;
-      document.getElementById("signin-panel")?.classList.remove("checkout-hidden");
-    });
+      document.getElementById("show-signup")?.addEventListener("click", () => {
+        document
+          .getElementById("signin-panel")
+          ?.classList.add("checkout-hidden");
+        const sp = document.getElementById("signup-panel");
+        sp?.classList.remove("checkout-hidden");
+        if (sp) sp.dataset.open = "1";
+      });
+      document.getElementById("show-signin")?.addEventListener("click", () => {
+        document
+          .getElementById("signup-panel")
+          ?.classList.add("checkout-hidden");
+        const sp = document.getElementById("signup-panel");
+        if (sp) delete sp.dataset.open;
+        document
+          .getElementById("signin-panel")
+          ?.classList.remove("checkout-hidden");
+      });
 
-    SB.initShell(() => cart, refresh);
-    // Re-bind auth forms for this page (initShell already wires modal-less redirect)
-    document.getElementById("signin-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      try {
-        const user = SB.signIn({
-          email: document.getElementById("signin-email").value,
-          password: document.getElementById("signin-password").value
+      SB.initShell(() => cart, refresh);
+      // Re-bind auth forms for this page (initShell already wires modal-less redirect)
+      document.getElementById("signin-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        try {
+          const user = SB.signIn({
+            email: document.getElementById("signin-email").value,
+            password: document.getElementById("signin-password").value,
+          });
+          SB.toast("Welcome back, " + user.name.split(" ")[0]);
+          paintAccount();
+        } catch (err) {
+          SB.toast(err.message);
+        }
+      });
+      document.getElementById("signup-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        try {
+          const user = SB.signUp({
+            name: document.getElementById("signup-name").value,
+            email: document.getElementById("signup-email").value,
+            phone: document.getElementById("signup-phone").value,
+            password: document.getElementById("signup-password").value,
+          });
+          SB.toast("Account created for " + user.name.split(" ")[0]);
+          paintAccount();
+        } catch (err) {
+          SB.toast(err.message);
+        }
+      });
+      document
+        .getElementById("profile-form")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          try {
+            SB.updateProfile({
+              name: document.getElementById("profile-name").value,
+              phone: document.getElementById("profile-phone").value,
+              address: document.getElementById("profile-address").value,
+            });
+            SB.toast("Profile saved");
+            paintAccount();
+          } catch (err) {
+            SB.toast(err.message);
+          }
         });
-        SB.toast("Welcome back, " + user.name.split(" ")[0]);
+      document.getElementById("signout-btn").addEventListener("click", () => {
+        SB.signOut();
         paintAccount();
-      } catch (err) {
-        SB.toast(err.message);
-      }
-    });
-    document.getElementById("signup-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      try {
-        const user = SB.signUp({
-          name: document.getElementById("signup-name").value,
-          email: document.getElementById("signup-email").value,
-          phone: document.getElementById("signup-phone").value,
-          password: document.getElementById("signup-password").value
-        });
-        SB.toast("Account created for " + user.name.split(" ")[0]);
-        paintAccount();
-      } catch (err) {
-        SB.toast(err.message);
-      }
-    });
-    document.getElementById("profile-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      try {
-        SB.updateProfile({
-          name: document.getElementById("profile-name").value,
-          phone: document.getElementById("profile-phone").value,
-          address: document.getElementById("profile-address").value
-        });
-        SB.toast("Profile saved");
-        paintAccount();
-      } catch (err) {
-        SB.toast(err.message);
-      }
-    });
-    document.getElementById("signout-btn").addEventListener("click", () => {
-      SB.signOut();
+      });
+
       paintAccount();
-    });
-
-    paintAccount();
-  </script>
-</body>
+    </script>
+  </body>
 </html>
