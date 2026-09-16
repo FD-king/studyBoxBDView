@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reviews — Study Box BD</title>
+  <link rel="stylesheet" href="assets/app.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <div>Hotline: <strong>+880 1616 887 997</strong> · +880 1736 571 571</div>
+      <div class="topbar-right">
+        <a href="index.html">Home</a>
+        <a href="books.html">Books</a>
+        <a href="courses.html">Courses</a>
+      </div>
+    </div>
+  </div>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="logo" href="index.html" aria-label="Study Box BD home">
+        <div class="logo-mark" aria-hidden="true">SB</div>
+        <div class="logo-text">Study Box BD<span>Bhuiyan English Academy</span></div>
+      </a>
+      <form class="search" id="search-form" role="search" action="books.html">
+        <label class="sr-only" for="q">Search books</label>
+        <input id="q" name="q" type="search" placeholder="Search VocabLab…" />
+        <button type="submit">Search</button>
+      </form>
+      <div class="header-actions">
+        <a class="icon-btn" href="account.html" id="open-auth" data-account-link aria-label="Sign in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          <span class="account-btn-label" data-account-label>Sign in</span>
+        </a>
+                <button type="button" class="hamburger-btn" id="open-nav" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+          Menu
+        </button>
+        <button type="button" class="icon-btn" id="open-cart" aria-label="Open cart">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.2 14h9.5c.75 0 1.41-.41 1.75-1.03l3.3-6.02A1 1 0 0 0 20.9 5H6.2L5.27 2.79A1 1 0 0 0 4.3 2H2v2h1.6l3.6 7.59-1.35 2.44C5.52 14.37 6.48 16 7.2 16h12v-2H7.2z"/></svg>
+          Cart
+          <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+  <aside class="nav-drawer" id="nav-drawer" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+    <div class="nav-drawer-head">
+      <h2>Menu</h2>
+      <button type="button" class="nav-drawer-close" id="nav-close" aria-label="Close menu">×</button>
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="index.html#vocablab">About VocabLab</a></li>
+      <li><a href="index.html#playlists">Free Videos</a></li>
+      <li><a href="reviews.html">Reviews</a></li>
+      <li><a href="index.html#momentum">Momentum</a></li>
+      <li><a href="account.html">My account</a></li>
+    </ul>
+    <div class="nav-drawer-foot">
+      Hotline: <a href="tel:+8801616887997">+880 1616 887 997</a>
+    </div>
+  </aside>
+  <main>
+    <div class="wrap page-title">
+      <h1>Customer reviews</h1>
+      <p>From book buyers and course students</p>
+    </div>
+    <section class="section">
+      <div class="wrap">
+        <div class="chips" role="group" aria-label="Filter reviews">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="chip" data-filter="course" aria-pressed="false">Course students</button>
+          <button type="button" class="chip" data-filter="book" aria-pressed="false">Book buyers</button>
+        </div>
+        <div class="review-grid" id="review-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-bottom">
+      <span>© <span id="year"></span> Study Box BD.</span>
+      <span><a href="index.html">← Back to home</a></span>
+    </div>
+  </footer>
+
+  <div class="backdrop" id="backdrop" hidden></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+    <div class="drawer-head">
+      <h2 id="drawer-title">Your cart</h2>
+      <button type="button" class="drawer-close" id="drawer-close" aria-label="Close cart">×</button>
+    </div>
+    <div class="drawer-body">
+      <div id="cart-items"></div>
+      <div id="checkout-block" class="checkout-hidden" style="margin-top:1rem;">
+        <h3 style="margin:0 0 .65rem;font-size:1rem;">Payment details</h3>
+        <form id="payment-form" class="form-grid" novalidate>
+          <div><label for="full-name">Full name</label><input id="full-name" required placeholder="Your name" /></div>
+          <div><label for="phone">Mobile</label><input id="phone" type="tel" required placeholder="01XXXXXXXXX" maxlength="14" /></div>
+          <div><label for="address">Delivery address</label><input id="address" required placeholder="Area, district" /></div>
+          <div>
+            <label for="method">Payment method</label>
+            <select id="method">
+              <option>bKash (demo)</option>
+              <option>Nagad (demo)</option>
+              <option>Cash on delivery (demo)</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="pay-success" id="pay-success" role="status">
+        <div class="check" aria-hidden="true">✓</div>
+        <p style="color:var(--body);margin:0 0 1rem;">Order confirmed (demo).</p>
+        <button type="button" class="btn btn-outline" id="success-done">Done</button>
+      </div>
+    </div>
+    <div class="drawer-foot" id="drawer-foot">
+      <div class="total-row"><span>Total</span><span id="cart-total">৳0</span></div>
+      <button type="button" class="btn btn-accent btn-block" id="pay-btn">Cart is empty</button>
+    </div>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/app.js"></script>
+  <script>
+    let cart = SB.loadCart();
+
+    function refresh() {
+      SB.updateBadge(cart);
+      SB.renderCartItems(cart, refresh);
+    }
+
+    SB.initShell(() => cart, refresh);
+    SB.renderReviews("review-grid", "all");
+    refresh();
+
+    document.querySelectorAll("[data-filter]").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll("[data-filter]").forEach((c) => c.setAttribute("aria-pressed", "false"));
+        chip.setAttribute("aria-pressed", "true");
+        SB.renderReviews("review-grid", chip.dataset.filter);
+      });
+    });
+  </script>
+</body>
+</html>
